@@ -13,8 +13,8 @@
 
 	// arrays are index and start at 0
 	const imageNameArray = ["topLeft", "topRight", "bottomLeft", "bottomRight"];
-
-	debugger;
+	
+	// debugger;
 
 
 	function switchImage() {
@@ -36,7 +36,13 @@
 			image.src = `images/${imageNameArray[index]}${this.dataset.puzzleref}.jpg`
 			//debugger;
 		});
+			draggablePieces.addClass("dropped");
+			$('.drop-zone').append(draggablePieces);
+		// I can add some lines here to fix children bugs
 	}
+
+
+
 
 	puzzleSelectors.forEach(thumbnail => { thumbnail.addEventListener("click", switchImage); });
 
@@ -53,18 +59,24 @@
 			e.dataTransfer.setData("text/plain", this.id);
 		});
 	});
-
-	//this is the dragover abd drop functionality => this is for the drop Zones
+	
+	
+	
+	//this is the dragover and drop functionalty => this is for the drop Zones
 	dropZones.forEach(zone => {
 		//allow user to drag over an element
 		zone.addEventListener("dragover", function(e) {
 			e.preventDefault();
 			console.log('dragged sumpin over me');
-		});
+	
+	
+	})
 
 		//allow user to drop over an element
 		zone.addEventListener("drop", function(e) {
 			e.preventDefault();
+			var draggablePieces = e.dataTransfer.getData("text/plain");
+			e.target.appendChild(draggablePieces);
 			//instead, do the following
 
 			console.log('you dropped sumpin on me');
@@ -76,5 +88,7 @@
 		//add the image to the drop zone
 		e.target.appendChild(document.querySelector(`#${draggedElement}`));
 	});
- })
+
+})	
+
 })();
