@@ -1,5 +1,5 @@
 #Lee Gahyun Drag and Drop 
-Going over some stuff that almost everyone got slightly worng. Not major stuff, so don;t feel bad, but minor stuff we don't want to keep going.
+Fixing two Bugs for this homework.
 
 ## Description
 
