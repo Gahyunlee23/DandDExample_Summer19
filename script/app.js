@@ -45,9 +45,10 @@
 				//childImages.removeChild[childImages.childNodes(0)];
 			//debugger;
 		});
+		
 		if (puzzleSelectors == "click") {
-			childImages.removeChild[childImages.childNodes(0)];
-			}
+			dropZones.removeChild();
+			} else { console.log('failed!') }
 	}
 
 

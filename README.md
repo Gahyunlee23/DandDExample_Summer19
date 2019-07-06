@@ -1,4 +1,4 @@
-#Lee Gahyun Drag and Drop 
+# Lee Gahyun Drag and Drop 
 Fixing two Bugs for this homework.
 
 ## Description
