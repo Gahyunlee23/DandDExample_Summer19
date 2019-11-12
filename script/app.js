@@ -10,11 +10,6 @@
 				dropZones = document.querySelectorAll('.drop-zone');
 
 	let draggablePieces = piecesBoard.querySelectorAll("img");
-	
-	let zone1 = 0;
-	let zone2 = 0;
-	let zone3 = 0;
-	let zone4 = 0;
 
 	// arrays are index and start at 0
 	const imageNameArray = ["topLeft", "topRight", "bottomLeft", "bottomRight"];
@@ -32,30 +27,24 @@
 		puzzleBoard.style.backgroundImage = `url(${bgImage})`;
 	
 
-		// work on switching the right-hand images so that they match the buttons at the bottom
+		// work on switching the right-hab images so that they match the buttons at the bottom
 		draggablePieces.forEach((image, index) => {
 			//log the image and the current index
 			//console.log(image, index);
 
 			//try to change each image source
 			image.src = `images/${imageNameArray[index]}${this.dataset.puzzleref}.jpg`
-				
-
-				//let childImages = document.getElementById("puzzle-piece");
-				//childImages.removeChild[childImages.childNodes(0)];
 			//debugger;
 		});
-		
-		if (puzzleSelectors == "click") {
-			dropZones.removeChild();
-			} else { console.log('failed!') }
+			draggablePieces.addClass("dropped");
+			$('.drop-zone').append(draggablePieces);
+		// I can add some lines here to fix children bugs
 	}
 
 
 
-	puzzleSelectors.forEach(thumbnail => { thumbnail.addEventListener("click", switchImage); });
-	
 
+	puzzleSelectors.forEach(thumbnail => { thumbnail.addEventListener("click", switchImage); });
 
 
 	//Loop through the draggable images
@@ -86,34 +75,18 @@
 		//allow user to drop over an element
 		zone.addEventListener("drop", function(e) {
 			e.preventDefault();
-			console.log(zone1);
-			
+			var draggablePieces = e.dataTransfer.getData("text/plain");
+			e.target.appendChild(draggablePieces);
 			//instead, do the following
 
-			//console.log('you dropped sumpin on me');
-			console.log(e.target.id);
+			console.log('you dropped sumpin on me');
 
 			let draggedElement = e.dataTransfer.getData("text/plain");
 			console.log('you dragged: ', draggedElement);
 			// debugger;
 
 		//add the image to the drop zone
-		if (zone1 == 0) {
-			e.target.appendChild(document.querySelector(`#${draggedElement}`));
-			zone1 = 1;
-		} else if (zone2 == 0) {
-			e.target.appendChild(document.querySelector(`#${draggedElement}`));
-			zone2 = 1;
-		} else if (zone3 == 0) {
-			e.target.appendChild(document.querySelector(`#${draggedElement}`));
-			zone3 = 1;
-		} else if (zone4 == 0) {
-			e.target.appendChild(document.querySelector(`#${draggedElement}`));
-			zone4 = 1;
-		} else { console.log('This box is filled'); }
-		//e.target.appendChild(document.querySelector(`#${draggedElement}`));
-		
-
+		e.target.appendChild(document.querySelector(`#${draggedElement}`));
 	});
 
 })	
